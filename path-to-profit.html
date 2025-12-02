@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Path to Profit Workshop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" href="https://ik.imagekit.io/q0gorn2pwv/logo.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue-900: #0a3c99;
+      --blue-700: #0f5fc7;
+      --blue-100: #e6f0ff;
+      --yellow-400: #f7c948;
+      --yellow-200: #fdecb5;
+      --white: #ffffff;
+      --text-main: #0b234a;
+      --text-muted: #4a5a7a;
+      --shadow: 0 16px 40px rgba(12, 27, 51, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Manrope", "Segoe UI", system-ui, -apple-system, sans-serif;
+      background:
+        radial-gradient(120% 120% at 100% 0%, rgba(15, 95, 199, 0.06), transparent 55%),
+        radial-gradient(100% 80% at 10% 10%, rgba(247, 201, 72, 0.08), transparent 55%),
+        #f9fbff;
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1180px, calc(100% - 64px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding: 56px 0 40px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 32px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--yellow-200);
+      color: var(--blue-900);
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+    }
+
+    h1 {
+      margin: 12px 0 10px;
+      font-size: clamp(2.2rem, 3vw + 1rem, 3rem);
+      color: var(--blue-900);
+      letter-spacing: -0.6px;
+      line-height: 1.2;
+    }
+
+    .lead {
+      margin: 0 0 14px;
+      font-size: 1.08rem;
+      color: var(--text-muted);
+      max-width: 640px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .panel {
+      background: #fff;
+      border-radius: 18px;
+      padding: 16px;
+      border: 1px solid rgba(12, 27, 51, 0.06);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-visual img {
+      width: 100%;
+      border-radius: 14px;
+      object-fit: cover;
+      box-shadow: var(--shadow);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-weight: 800;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease, border-color 150ms ease;
+      font-size: 0.95rem;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue-700), var(--blue-900));
+      color: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 34px rgba(12, 27, 51, 0.18);
+    }
+
+    .btn-ghost {
+      background: var(--yellow-100);
+      color: var(--blue-900);
+      border: 1px solid rgba(12, 27, 51, 0.08);
+    }
+
+    .section {
+      padding: 28px 0;
+    }
+
+    .section h2 {
+      margin: 0 0 10px;
+      color: var(--blue-900);
+      font-size: 1.7rem;
+      letter-spacing: -0.3px;
+      text-align: center;
+    }
+
+    .section p.section-lead {
+      margin: 0 0 22px;
+      color: var(--text-muted);
+      text-align: center;
+      font-size: 1.02rem;
+    }
+
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .about-workshop {
+      padding: 28px 0;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      align-items: center;
+    }
+
+    .about-image img {
+      width: 100%;
+      border-radius: 14px;
+      object-fit: cover;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(12, 27, 51, 0.06);
+    }
+
+    .about-copy h2 {
+      margin: 0 0 12px;
+      color: var(--blue-900);
+      font-size: 1.7rem;
+      letter-spacing: -0.3px;
+    }
+
+    .about-copy p {
+      margin: 0 0 12px;
+      color: var(--text-muted);
+      font-size: 1.02rem;
+      line-height: 1.65;
+    }
+
+    .details {
+      padding: 28px 0;
+    }
+
+    .details-card {
+      background: linear-gradient(135deg, #f6f9ff 0%, #fefaf0 100%);
+      border-radius: 22px;
+      padding: 22px;
+      border: 1px solid rgba(12, 27, 51, 0.06);
+      box-shadow: 0 22px 40px rgba(12, 27, 51, 0.12);
+      display: grid;
+      gap: 14px;
+    }
+
+    .details h2 {
+      margin: 0 0 10px;
+      color: var(--blue-900);
+      font-size: 1.8rem;
+      letter-spacing: -0.3px;
+      text-align: center;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+    }
+
+    .detail-block {
+      background: #fff;
+      border-radius: 14px;
+      padding: 16px;
+      border: 1px solid rgba(12, 27, 51, 0.06);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), 0 12px 26px rgba(12, 27, 51, 0.08);
+    }
+
+    .detail-block h4 {
+      margin: 0 0 8px;
+      color: var(--blue-900);
+      font-size: 1.05rem;
+      letter-spacing: -0.2px;
+    }
+
+    .detail-block p {
+      margin: 0;
+      color: var(--text-muted);
+    }
+
+    .date-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 14px;
+      background: #e1eafe;
+      color: var(--blue-900);
+      border-radius: 14px;
+      font-weight: 800;
+      border: 1px solid rgba(12, 27, 51, 0.12);
+      margin: 8px 0;
+      width: 100%;
+      justify-content: center;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), 0 10px 20px rgba(12, 27, 51, 0.08);
+    }
+
+    .spec-card {
+      background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+      border-radius: 16px;
+      padding: 18px;
+      border: 1px solid rgba(12, 27, 51, 0.08);
+      box-shadow: 0 12px 28px rgba(12, 27, 51, 0.08);
+      display: grid;
+      gap: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .spec-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(15, 95, 199, 0.06), rgba(247, 201, 72, 0.08));
+      opacity: 0;
+      transition: opacity 160ms ease;
+      z-index: 0;
+    }
+
+    .spec-card:hover::before {
+      opacity: 1;
+    }
+
+    .spec-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .spec-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--blue-700), var(--yellow-400));
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: 800;
+      box-shadow: 0 10px 22px rgba(12, 27, 51, 0.12);
+    }
+
+    .spec-card h3 {
+      margin: 0;
+      color: var(--blue-900);
+      font-size: 1.1rem;
+    }
+
+    .spec-card p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      line-height: 1.6;
+    }
+
+    .cta-strip {
+      margin: 28px 0;
+      background: linear-gradient(90deg, rgba(15, 95, 199, 0.14), rgba(247, 201, 72, 0.24), rgba(15, 95, 199, 0.14));
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(12, 27, 51, 0.06);
+    }
+
+    .cta-track {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 16px;
+      animation: slideLeft 16s linear infinite;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue-900);
+      white-space: nowrap;
+      min-width: 220%;
+    }
+
+    .cta-strip.inline {
+      margin: 8px 0 12px;
+    }
+
+    .cta-track.hero {
+      animation-duration: 18s;
+      font-size: 0.95rem;
+    }
+
+    .cta-banner {
+      padding: 24px 0;
+      text-align: center;
+      display: grid;
+      gap: 10px;
+    }
+
+    .cta-banner h2 {
+      margin: 0;
+      color: #0a3c99;
+      font-size: clamp(1.6rem, 2vw + 1rem, 2.2rem);
+      line-height: 1.3;
+      letter-spacing: -0.2px;
+    }
+
+    .cta-banner p {
+      margin: 0;
+      color: #0a3c99;
+      font-weight: 800;
+      font-size: 1.05rem;
+    }
+
+    .cta-banner .cta-button {
+      margin: 8px auto 0;
+      max-width: 720px;
+      width: 100%;
+      background: #14b8a6;
+      color: #fff;
+      border-radius: 12px;
+      padding: 16px;
+      font-weight: 800;
+      font-size: 1.1rem;
+      box-shadow: 0 12px 28px rgba(20, 184, 166, 0.25);
+      border: none;
+      cursor: pointer;
+      transition: transform 150ms ease, box-shadow 150ms ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .cta-banner .cta-button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 32px rgba(20, 184, 166, 0.3);
+    }
+
+    .cta-note {
+      margin: 6px 0 0;
+      color: var(--text-muted);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .trusted-strip {
+      margin: 14px 0 24px;
+      display: grid;
+      gap: 10px;
+      justify-items: center;
+      text-align: center;
+    }
+
+    .trusted-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .trusted-badge {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: #f2f6ff;
+      color: var(--blue-900);
+      font-weight: 700;
+      border: 1px solid rgba(12, 27, 51, 0.08);
+    }
+
+    .cta-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--yellow-400);
+      box-shadow: 0 0 0 4px rgba(247, 201, 72, 0.28);
+      flex-shrink: 0;
+    }
+
+    @keyframes slideLeft {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .video-card {
+      border-radius: 16px;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid rgba(12, 27, 51, 0.08);
+      box-shadow: 0 12px 28px rgba(12, 27, 51, 0.08);
+      display: grid;
+      gap: 10px;
+    }
+
+    .video-frame {
+      position: relative;
+      padding-bottom: 56.25%;
+      background: linear-gradient(135deg, #dbeafe, #fff7de);
+    }
+
+    .video-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: 12px;
+    }
+
+    .video-card h4 {
+      margin: 0 12px 12px;
+      color: var(--blue-900);
+      font-size: 1.02rem;
+    }
+
+    .faq {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      gap: 12px;
+    }
+
+    details {
+      background: #fff;
+      border: 1px solid rgba(12, 27, 51, 0.08);
+      border-radius: 12px;
+      padding: 0;
+      box-shadow: 0 12px 26px rgba(12, 27, 51, 0.08);
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 800;
+      color: var(--blue-900);
+      outline: none;
+      padding: 14px 16px;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    summary::after {
+      content: "+";
+      font-size: 1.2rem;
+      color: var(--blue-700);
+      transition: transform 150ms ease;
+    }
+
+    details[open] summary::after {
+      transform: rotate(45deg);
+    }
+
+    details p {
+      margin: 0;
+      padding: 0 16px 14px 16px;
+      color: var(--text-muted);
+    }
+
+    .footer {
+      background: #0c3b67;
+      color: rgba(255, 255, 255, 0.88);
+      padding: 48px 0 28px;
+      margin-top: 32px;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 26px;
+      align-items: start;
+    }
+
+    .footer-col h4 {
+      margin: 0 0 12px 0;
+      font-size: 1.1rem;
+      color: #fff;
+      letter-spacing: -0.1px;
+    }
+
+    .footer-brand img {
+      max-width: 220px;
+      height: auto;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .footer-text {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 1.02rem;
+      line-height: 1.55;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.88);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .footer-links a:hover {
+      color: var(--yellow-400);
+    }
+
+    .contact-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 8px;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 700;
+    }
+
+    .contact-item {
+      display: grid;
+      grid-template-columns: 20px 1fr;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .contact-icon {
+      color: var(--yellow-400);
+    }
+
+    .footer-social {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .social-btn {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: var(--yellow-400);
+      display: grid;
+      place-items: center;
+      color: #0c3b67;
+      font-weight: 800;
+      text-decoration: none;
+      transition: transform 150ms ease, box-shadow 150ms ease;
+    }
+
+    .social-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.18);
+    }
+
+    .footer-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 18px;
+      background: var(--yellow-400);
+      color: #0c3b67;
+      border-radius: 12px;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .footer-cta:hover {
+      transform: translateY(-1px);
+    }
+
+    .footer-divider {
+      margin: 24px 0 18px;
+      border: none;
+      border-top: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .footer-top {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .footer-top {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-track {
+        animation-duration: 12s;
+      }
+
+      .video-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow">Path to Profit Workshop</span>
+          <h1>Ready to run your business with clarity and grow your profits?</h1>
+          <p class="lead">Join Tracey for a hands-on workshop that diagnoses your profit drivers, sharpens your offers, and leaves you with a 90-day plan you can act on immediately.</p>
+        </div>
+        <div class="hero-visual panel">
+          <video src="https://ik.imagekit.io/q0gorn2pwv/file-uploads_sites_71423_video_feeba6d-472-d6c0-474f-b4d23035e73b_V2_P2P_Intro.MOV.mp4" autoplay muted playsinline controls style="width:100%; border-radius:12px; display:block;"></video>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-banner">
+      <h2>Come to the <span style="color:#14b8a6;">FREE</span> Path to Profits Workshop to learn how to grow the profits of your business.</h2>
+      <p>(Next Date... Thursday 22nd January, 2026 - 9am to 12noon)</p>
+      <a class="cta-button" style="background: var(--blue-700);" href="contact.html">Register Now</a>
+      <div class="cta-note">Seats are limited. Workshop is free (valued at $297).</div>
+    </section>
+
+    <div class="trusted-strip">
+      <div class="trusted-badges">
+        <span class="trusted-badge">Gold Coast founders</span>
+        <span class="trusted-badge">Service businesses</span>
+        <span class="trusted-badge">Retail & hospitality</span>
+        <span class="trusted-badge">Trades & construction</span>
+      </div>
+    </div>
+
+    <section class="about-workshop">
+      <div class="about-grid">
+        <div class="about-image">
+          <img src="https://ik.imagekit.io/q0gorn2pwv/c4072f4-1ab0-b80-ef1d-a3753c066b7_f303215e-8177-429f-928d-511a9d4e2075.png" alt="Tracey facilitating the Path to Profit Workshop">
+        </div>
+        <div class="about-copy">
+          <h2>A Workshop To Boost Your Profits</h2>
+          <p>If you’ve been feeling like your business could be more profitable – but you’re not quite sure where to start – you’re not alone! Many Small Business Owners work hard every day without a clear roadmap for what will actually make the biggest difference to their bottom line.</p>
+          <p>That’s exactly why I created Path to Profits – a practical, friendly, and hands-on workshop designed to help Gold Coast Small Business Owners understand their numbers, uncover their key profit drivers, and leave with an action plan that works in the real world.</p>
+          <p>This isn’t a theory-heavy seminar where you leave wondering what to do next. It’s a roll-up-your-sleeves, interactive day where you’ll work directly on your business with my guidance every step of the way.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="specs">
+      <h2>Here’s What We’ll Cover</h2>
+      <p class="section-lead">The essentials you need to boost profit, attract better customers, and lead with confidence.</p>
+      <div class="specs-grid">
+        <div class="spec-card">
+          <div class="spec-icon">#</div>
+          <h3>Understanding Your Numbers</h3>
+          <p>Know exactly what numbers you need to know in your business and how to use them so you can see your profits grow.</p>
+        </div>
+        <div class="spec-card">
+          <div class="spec-icon">↑</div>
+          <h3>Identify Your Key Business Drivers</h3>
+          <p>Pinpoint the areas that, when improved, make the biggest difference to your bottom line.</p>
+        </div>
+        <div class="spec-card">
+          <div class="spec-icon">★</div>
+          <h3>Marketing That Works!</h3>
+          <p>Discover the best strategies to bring in more of your ideal customers — cost effectively.</p>
+        </div>
+        <div class="spec-card">
+          <div class="spec-icon">✔</div>
+          <h3>Practical Business Strategies</h3>
+          <p>Tips to help you work smarter, manage your time better, and lead your business with confidence.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top: 10px;">
+      <div style="background: linear-gradient(135deg, #dfeafe 0%, #fdecb5 100%); border-radius: 18px; padding: 22px; color: var(--text-main); box-shadow: 0 16px 36px rgba(12, 27, 51, 0.18);">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; align-items: center;">
+          <div style="display:grid; gap:10px;">
+            <h2 style="margin:0; color:var(--blue-900); font-size:1.7rem; letter-spacing:-0.3px;">Why This Workshop Works…</h2>
+            <p style="margin:0; color: var(--text-main); font-size:1.02rem;">With over 20 years coaching small business owners, I know the challenges you face – and how to turn them into opportunities. Small group (12 max) so you get answers, tailored advice, and learn from others in the room.</p>
+          </div>
+          <div style="background: rgba(255,255,255,0.92); border-radius: 14px; padding: 14px; display: grid; gap: 10px; border:1px solid rgba(12,27,51,0.08); box-shadow: 0 10px 22px rgba(12,27,51,0.12);">
+            <div style="display:grid; grid-template-columns: 26px 1fr; gap:10px; align-items:flex-start;">
+              <span style="width:26px; height:26px; border-radius:8px; background:linear-gradient(135deg, var(--blue-700), var(--yellow-400)); color:#fff; display:grid; place-items:center; font-weight:800;">→</span>
+              <div>
+                <strong style="color:var(--blue-900);">A clear Roadmap</strong>
+                <p style="margin:4px 0 0; color: var(--text-muted);">Action steps to improve profit as soon as you leave.</p>
+              </div>
+            </div>
+            <div style="display:grid; grid-template-columns: 26px 1fr; gap:10px; align-items:flex-start;">
+              <span style="width:26px; height:26px; border-radius:8px; background:linear-gradient(135deg, var(--blue-700), var(--yellow-400)); color:#fff; display:grid; place-items:center; font-weight:800;">⚡</span>
+              <div>
+                <strong style="color:var(--blue-900);">Confidence to Act</strong>
+                <p style="margin:4px 0 0; color: var(--text-muted);">Clarity and support to move quickly on your next steps.</p>
+              </div>
+            </div>
+            <div style="display:grid; grid-template-columns: 26px 1fr; gap:10px; align-items:flex-start;">
+              <span style="width:26px; height:26px; border-radius:8px; background:linear-gradient(135deg, var(--blue-700), var(--yellow-400)); color:#fff; display:grid; place-items:center; font-weight:800;">🔎</span>
+              <div>
+                <strong style="color:var(--blue-900);">Fresh Perspective</strong>
+                <p style="margin:4px 0 0; color: var(--text-muted);">New insights from Tracey and fellow owners in the room.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="details">
+      <h2>Workshop Details</h2>
+      <div class="details-card">
+        <div class="details-grid">
+          <div class="detail-block">
+            <h4>Upcoming Dates to Choose From</h4>
+            <div class="date-chip">Saturday 15th November, 2025</div>
+            <div class="date-chip">Thursday 4th December, 2025</div>
+            <div class="date-chip">Time: 9am to 12noon</div>
+          </div>
+          <div class="detail-block">
+            <h4>Where</h4>
+            <p>Gold Coast Business Coaching<br>Suite 31011 (Level 10), 9 Lawson St, Southport</p>
+          </div>
+          <div class="detail-block">
+            <h4>Investment</h4>
+            <p><strong style="color:var(--blue-900);">FREE</strong> (Valued at $297 pp)</p>
+            <a class="btn btn-primary" style="margin-top:10px; display:inline-flex; justify-content:center; width:100%;" href="contact.html">Register Now</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-banner">
+      <h2>Come to the <span style="color:#14b8a6;">FREE</span> Path to Profits Workshop to learn how to grow the profits of your business.</h2>
+      <p>(Next Date... Thursday 22nd January, 2026 - 9am to 12noon)</p>
+      <a class="cta-button" style="background: var(--blue-700);" href="contact.html">Register Now</a>
+      <div class="cta-note">Seats are limited. Workshop is free (valued at $297).</div>
+    </section>
+
+    <section class="section" id="testimonials">
+      <h2>What People Say About Us</h2>
+      <p class="section-lead">Hear directly from business owners who applied the workshop playbook.</p>
+      <div class="video-grid">
+        <div class="video-card">
+          <div class="video-frame">
+            <video src="https://ik.imagekit.io/q0gorn2pwv/file-uploads_sites_71423_video_7e5b8f-c23-af82-7fdf-7f640a1277_Testimonial_Dan_Mesiti.MOV.mp4" controls playsinline></video>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-frame">
+            <video src="https://ik.imagekit.io/q0gorn2pwv/file-uploads_sites_71423_video_1a7451a-61-31f-8e7-205a115ed553_Testimonial_Shaun_Birley.mp4.mp4" controls playsinline></video>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-frame">
+            <video src="https://ik.imagekit.io/q0gorn2pwv/file-uploads_sites_71423_video_2cac3-f233-333-66bc-83c51be4fb2b_Testimonial_Gus_Hive_Media.MOV.mp4" controls playsinline></video>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-frame">
+            <video src="https://ik.imagekit.io/q0gorn2pwv/file-uploads_sites_71423_video_337bbe3-01c8-67a-722c-10626000451_Testimonial_Stephanie_Hornby.MOV.mp4" controls playsinline></video>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-frame">
+            <video src="https://ik.imagekit.io/q0gorn2pwv/file-uploads_sites_71423_video_4a05515-c4c8-4288-e346-ef30ce5c48d2_Testimonial_Kayleigh_O_Brien.MOV.mp4" controls playsinline></video>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-frame">
+            <video src="https://ik.imagekit.io/q0gorn2pwv/file-uploads_sites_71423_video_4a05515-c4c8-4288-e346-ef30ce5c48d2_Testimonial_Kayleigh_O_Brien.MOV.mp4" controls playsinline></video>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="cta-strip" aria-hidden="true">
+      <div class="cta-track">
+        <span class="cta-dot"></span> Book now — secure your spot
+        <span class="cta-dot"></span> Your 90-day profit plan awaits
+        <span class="cta-dot"></span> Book now — secure your spot
+        <span class="cta-dot"></span> Your 90-day profit plan awaits
+      </div>
+    </div>
+
+    <section class="about-workshop" id="facilitator">
+      <div class="about-grid">
+        <div class="about-copy">
+          <h2>Meet Your Workshop Facilitator...</h2>
+          <p>Tracey has been coaching, training and speaking to small business owners for the last 20 years! She is a best selling author and has spoken on business stages all around Australia and overseas, but lives right here on the Gold Coast.</p>
+          <p>Tracey is known for her practical, down to earth style and for her ability to keep things simple to help business owners maximise their profits.</p>
+          <p>Come learn with Tracey in the Path to Profits workshop for this special FREE offer.</p>
+        </div>
+        <div class="about-image">
+          <img src="https://ik.imagekit.io/q0gorn2pwv/tracey_leak_001%20(1).png?updatedAt=1764690022156" alt="Tracey Leak workshop facilitator">
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <h2>Frequently Asked Questions</h2>
+      <p class="section-lead">Quick answers about the workshop experience.</p>
+      <div class="faq">
+        <details>
+          <summary>Why in person and not online?</summary>
+          <p>There is a difference between efficient and effective. Yes, online Zoom meetings/lessons are highly efficient, but they are nowhere near as effective as an in-person event. I want to give you REAL value and make sure we get the most from our time together, so we’re choosing effective over merely efficient.</p>
+        </details>
+        <details>
+          <summary>Times, dates and location for the workshop?</summary>
+          <p>All Path to Profits workshops are held at my offices at: Gold Coast Business Coaching, Suite 31011, Level 10, 9 Lawson St, Southport. Workshop is 8.45am for a 9am start and we finish at 12noon. Upcoming date: Thursday 22nd January, 2026.</p>
+        </details>
+        <details>
+          <summary>What do I need to do/bring/wear for the event?</summary>
+          <p>Nothing to do before. Come ready to learn with a growth mindset. No need to bring anything. Dress smart business casual. I’ll provide everything you need from pens & paper to tea/coffee and morning tea.</p>
+        </details>
+        <details>
+          <summary>How much is it to attend and can I bring a friend?</summary>
+          <p>This is a FREE event (valued at $297 pp). You can bring a BUSINESS friend. Ideally you’re in business and registered for GST; startups welcome if you’re thinking business, not hobby. If more than one is coming, please register separately so we have names, contacts, and dietary needs.</p>
+        </details>
+        <details>
+          <summary>What business requirements do I need to attend?</summary>
+          <p>No strict requirements, but being registered for GST helps. Startups are welcome if it’s a full-time business. We’ve had multi-outlet, multi-million revenue businesses attend. Most important: a positive, growth mindset, ready to learn.</p>
+        </details>
+        <details>
+          <summary>Are you going to sell to me?</summary>
+          <p>Yes, but not hard sell. This free event gives you real value first. You’ll walk away with value whether or not you do more with me. If you want next steps, I’ll share an affordable option—no pressure. I’ll even say “don’t buy” if it’s not right for you.</p>
+        </details>
+        <details>
+          <summary>How many people will be in the workshop?</summary>
+          <p>Between 4 to 12 people. We keep it small so you can ask questions and get tailored help. Efficient is 100 people; effective is 12. I want you to walk away with value.</p>
+        </details>
+        <details>
+          <summary>I have dietary requirements?</summary>
+          <p>No problem. When you register, add dietary needs (be specific—e.g., vegetarian but no eggs; milk preferences). If I’m unsure, I’ll email to confirm so we have what you need.</p>
+        </details>
+        <details>
+          <summary>Where will I park?</summary>
+          <p>After you register I’ll email directions. Best parking is Athol Paterson Car Park (between Lawson St and Suter St behind the Southport Library) — $8.70 full day ($3/hour). G-Link stop is close; we’re across the road on the back side of Australia Fair.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="cta-banner" style="padding-bottom: 64px;">
+      <h2>Come to the <span style="color:#14b8a6;">FREE</span> Path to Profits Workshop to learn how to grow the profits of your business.</h2>
+      <p>(Next Date... Thursday 22nd January, 2026 - 9am to 12noon)</p>
+      <a class="cta-button" style="background: var(--blue-700);" href="contact.html">Register Now</a>
+      <div class="cta-note">Seats are limited. Workshop is free (valued at $297).</div>
+    </section>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-col footer-brand">
+          <img src="https://ik.imagekit.io/q0gorn2pwv/logo.png" alt="Gold Coast Business Coaching logo">
+          <p class="footer-text">Helping Gold Coast business owners grow profitability with practical, actionable coaching.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#ebook">Free Ebook</a></li>
+            <li><a href="path-to-profit.html">Path to Profits Workshop</a></li>
+            <li><a href="profit-accelerator.html">12 Week Profit Accelerator</a></li>
+            <li><a href="inner-circle.html">Inner Circle Mastermind</a></li>
+            <li><a href="one-to-one.html">1-to-1 Coaching</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul class="contact-list">
+            <li class="contact-item"><span class="contact-icon">✉️</span><span>tracey@traceyleak.com</span></li>
+            <li class="contact-item"><span class="contact-icon">☎️</span><span>0407 564 119</span></li>
+            <li class="contact-item"><span class="contact-icon">📍</span><span>Suite 31011 (Level 10), 9 Lawson St, Southport Qld 4215</span></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Follow</h4>
+          <div class="footer-social">
+            <a class="social-btn" aria-label="LinkedIn" href="#"><span>in</span></a>
+            <a class="social-btn" aria-label="Facebook" href="#"><span>f</span></a>
+            <a class="social-btn" aria-label="Instagram" href="#"><span>ig</span></a>
+          </div>
+          <a class="footer-cta" href="contact.html">Get started today</a>
+        </div>
+      </div>
+      <hr class="footer-divider">
+      <div class="footer-bottom">
+        <span>© 2025 Gold Coast Business Coaching. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Tracey Leak</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" href="https://ik.imagekit.io/q0gorn2pwv/logo.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue-900: #0a3c99;
+      --blue-700: #0f5fc7;
+      --blue-100: #e6f0ff;
+      --yellow-400: #f7c948;
+      --yellow-200: #fdecb5;
+      --yellow-100: #fff7de;
+      --white: #ffffff;
+      --text-main: #0b234a;
+      --text-muted: #4a5a7a;
+      --shadow: 0 14px 30px rgba(12, 27, 51, 0.1);
+      --radius: 16px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Manrope", "Segoe UI", system-ui, -apple-system, sans-serif;
+      background:
+        radial-gradient(140% 120% at 100% 0%, rgba(15, 95, 199, 0.05), transparent 55%),
+        radial-gradient(90% 70% at 14% 16%, rgba(247, 201, 72, 0.08), transparent 55%),
+        #f9fbff;
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1280px, calc(100% - 64px));
+      margin: 0 auto;
+      padding: 36px 0 64px;
+    }
+
+    /* Navigation */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(15, 95, 199, 0.08);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 0;
+      gap: 12px;
+    }
+
+    .nav-inner .brand {
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      justify-content: flex-end;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .nav-inner .menu,
+    .nav-inner .cta-group {
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--blue-900);
+      font-weight: 800;
+      letter-spacing: 0.2px;
+    }
+
+    .brand img {
+      height: 54px;
+      width: auto;
+      max-width: 220px;
+      display: block;
+      object-fit: contain;
+    }
+
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .menu-link {
+      position: relative;
+      color: inherit;
+      padding: 8px 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: none;
+      background: none;
+      font: inherit;
+      cursor: pointer;
+      transition: color 150ms ease;
+    }
+
+    .menu-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--blue-700), var(--yellow-400));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 160ms ease;
+    }
+
+    .menu-link:hover {
+      color: var(--blue-700);
+    }
+
+    .menu-link:hover::after,
+    .menu-link:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-toggle::after {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-left: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      transform: rotate(-45deg);
+      margin-left: 2px;
+      display: inline-block;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      min-width: 220px;
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(12, 27, 51, 0.12);
+      padding: 8px;
+      display: grid;
+      gap: 2px;
+      opacity: 0;
+      transform: none;
+      pointer-events: none;
+      transition: opacity 120ms ease;
+      border: 1px solid rgba(12, 27, 51, 0.05);
+      z-index: 5;
+    }
+
+    .dropdown:hover .dropdown-menu,
+    .dropdown:focus-within .dropdown-menu {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .dropdown-menu a {
+      padding: 10px 12px;
+      border-radius: 10px;
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    .dropdown-menu a:hover {
+      background: var(--yellow-100);
+      color: var(--blue-900);
+    }
+
+    .cta-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    /* Body container spacing */
+    .page-section {
+      padding: 32px 0 0;
+    }
+
+    .page-header {
+      margin: 16px 0 28px;
+      display: grid;
+      gap: 8px;
+      text-align: center;
+    }
+
+    .page-header h1 {
+      margin: 0;
+      font-size: clamp(2rem, 2vw + 1rem, 2.6rem);
+      color: var(--blue-900);
+      letter-spacing: -0.4px;
+    }
+
+    .page-header p {
+      margin: 0;
+      color: var(--text-muted);
+      max-width: 720px;
+      font-size: 1.02rem;
+      justify-self: center;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+      align-items: start;
+    }
+
+    form {
+      background: #f4f7fc;
+      border-radius: 18px;
+      padding: 26px;
+      border: 1px solid rgba(12, 27, 51, 0.08);
+      box-shadow: 0 14px 30px rgba(12, 27, 51, 0.08);
+      display: grid;
+      gap: 16px;
+    }
+
+    label {
+      font-weight: 700;
+      color: var(--text-main);
+      font-size: 0.95rem;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid rgba(12, 27, 51, 0.12);
+      padding: 12px 14px;
+      font-family: inherit;
+      font-size: 1rem;
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.94);
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: rgba(15, 95, 199, 0.5);
+      box-shadow: 0 0 0 3px rgba(15, 95, 199, 0.15);
+    }
+
+    textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-weight: 800;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease, border-color 150ms ease;
+      font-size: 0.95rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue-700), var(--blue-900));
+      color: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 32px rgba(12, 27, 51, 0.22);
+    }
+
+    .contact-card {
+      background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+      border-radius: 18px;
+      padding: 26px;
+      border: 1px solid rgba(12, 27, 51, 0.08);
+      box-shadow: 0 12px 28px rgba(12, 27, 51, 0.08);
+      display: grid;
+      gap: 14px;
+      height: fit-content;
+    }
+
+    .contact-card h2 {
+      margin: 0;
+      color: var(--blue-900);
+      font-size: 1.3rem;
+      letter-spacing: -0.2px;
+    }
+
+    .contact-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .contact-item {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 10px;
+      align-items: center;
+      color: var(--text-main);
+      font-weight: 700;
+    }
+
+    .contact-item small {
+      display: block;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .icon {
+      width: 24px;
+      height: 24px;
+      display: grid;
+      place-items: center;
+      color: var(--blue-900);
+    }
+
+    .contact-hero {
+      text-align: center;
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact-hero img {
+      width: 180px;
+      height: 180px;
+      border-radius: 80%;
+      object-fit: cover;
+      object-position: center center;
+      display: block;
+      margin: 0 auto;
+      box-shadow: 0 12px 30px rgba(12, 27, 51, 0.16);
+    }
+
+    .contact-hero h3 {
+      margin: 0;
+      color: var(--blue-900);
+      font-size: 1.35rem;
+      letter-spacing: -0.2px;
+    }
+
+    .contact-hero p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .contact-divider {
+      border: none;
+      border-top: 1px solid rgba(12, 27, 51, 0.08);
+      margin: 10px 0;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .container {
+        width: min(1080px, calc(100% - 36px));
+        padding-bottom: 48px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-right {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .menu {
+        gap: 18px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--footer-bg, #0c3b67);
+      color: rgba(255, 255, 255, 0.88);
+      padding: 64px 0 32px;
+      margin-top: 32px;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 32px;
+      align-items: start;
+    }
+
+    .footer-col h4 {
+      margin: 0 0 12px 0;
+      font-size: 1.1rem;
+      color: #fff;
+      letter-spacing: -0.1px;
+    }
+
+    .footer-brand img {
+      max-width: 180px;
+      height: auto;
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    .footer-text {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 8px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.88);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .footer-links a:hover {
+      color: var(--yellow-400);
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 10px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .contact-item {
+      display: grid;
+      grid-template-columns: 20px 1fr;
+      gap: 10px;
+      align-items: center;
+      color: rgba(255, 255, 255, 0.88);
+      font-weight: 600;
+    }
+
+    .contact-icon {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      color: var(--yellow-400);
+    }
+
+    .footer-social {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .social-btn {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: var(--yellow-400);
+      display: grid;
+      place-items: center;
+      color: var(--footer-bg, #0c3b67);
+      font-weight: 800;
+      text-decoration: none;
+      transition: transform 150ms ease, box-shadow 150ms ease;
+    }
+
+    .social-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.18);
+    }
+
+    .footer-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 18px;
+      background: var(--yellow-400);
+      color: var(--footer-bg, #0c3b67);
+      border-radius: 12px;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .footer-cta:hover {
+      transform: translateY(-1px);
+    }
+
+    .footer-divider {
+      margin: 32px 0 22px;
+      border: none;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.95rem;
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .footer-top {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .footer-top {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html" aria-label="Gold Coast Business Coaching">
+        <img src="https://ik.imagekit.io/q0gorn2pwv/logo.png" alt="Gold Coast Business Coaching logo" loading="lazy">
+        <span class="sr-only">Gold Coast Business Coaching</span>
+      </a>
+      <div class="nav-right">
+        <nav class="menu" aria-label="Main navigation">
+          <a class="menu-link" href="index.html#top">Home</a>
+          <a class="menu-link" href="index.html#about">About</a>
+          <a class="menu-link" href="index.html#ebook">Free Ebook</a>
+          <div class="dropdown">
+            <button class="menu-link dropdown-toggle" type="button" aria-haspopup="true">Programs</button>
+            <div class="dropdown-menu" role="menu">
+              <a href="path-to-profit.html" role="menuitem">Path to Profit Workshop</a>
+              <a href="profit-accelerator.html" role="menuitem">12 Week Profit Accelerator</a>
+              <a href="inner-circle.html" role="menuitem">Inner Circle Mastermind</a>
+              <a href="one-to-one.html" role="menuitem">1-2-1 Strategy & Coaching</a>
+            </div>
+          </div>
+          <a class="menu-link" href="contact.html">Contact Us</a>
+        </nav>
+        <div class="cta-group">
+          <a class="btn btn-primary" href="contact.html">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container page-section">
+    <div class="page-header">
+      <h1>Get in Touch</h1>
+      <p>Ready to transform your business? Let's start the conversation.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-hero">
+          <img src="https://ik.imagekit.io/q0gorn2pwv/tracey_leak_001%20(1).png" alt="Tracey Leak portrait">
+          <h3>Hi, I'm Tracey</h3>
+          <p>I'm excited to learn about your business goals and discuss how we can work together to drive your profitability and success.</p>
+        </div>
+        <hr class="contact-divider">
+        <h2>Contact Information</h2>
+        <ul class="contact-list">
+          <li class="contact-item">
+            <span class="icon">☎️</span>
+            <span>0407 564 119</span>
+          </li>
+          <li class="contact-item">
+            <span class="icon">✉️</span>
+            <span>tracey@traceyleak.com</span>
+          </li>
+          <li class="contact-item">
+            <span class="icon">📍</span>
+            <span>Suite 31011 (Level 10), 9 Lawson St, Southport Qld 4215</span>
+          </li>
+        </ul>
+      </div>
+
+      <form>
+        <div class="form-row">
+          <div>
+            <label for="first-name">First Name *</label>
+            <input id="first-name" name="first-name" type="text" placeholder="First name" required>
+          </div>
+          <div>
+            <label for="last-name">Last Name *</label>
+            <input id="last-name" name="last-name" type="text" placeholder="Last name" required>
+          </div>
+        </div>
+        <div>
+          <label for="email">Email *</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required>
+        </div>
+        <div>
+          <label for="phone">Phone *</label>
+          <input id="phone" name="phone" type="tel" placeholder="+61 4XX XXX XXX" required>
+        </div>
+        <div>
+          <label for="business-name">Business Name *</label>
+          <input id="business-name" name="business-name" type="text" placeholder="Your business name" required>
+        </div>
+        <div>
+          <label for="business-industry">Business Industry *</label>
+          <input id="business-industry" name="business-industry" type="text" placeholder="e.g., Retail, Services, Hospitality" required>
+        </div>
+        <div>
+          <label for="program">Which program are you interested in? *</label>
+          <select id="program" name="program" required>
+            <option value="" disabled selected>Select a program</option>
+            <option>Path to Profit Workshop</option>
+            <option>12 Week Profit Accelerator</option>
+            <option>Inner Circle Mastermind</option>
+            <option>1-2-1 Strategy & Coaching</option>
+          </select>
+        </div>
+        <div>
+          <label for="message">Your message</label>
+          <textarea id="message" name="message" placeholder="Share your goals, challenges, or questions"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-col footer-brand">
+          <img src="https://ik.imagekit.io/q0gorn2pwv/logo.png" alt="Gold Coast Business Coaching logo">
+          <p class="footer-text">Helping Gold Coast business owners grow profitability with practical, actionable coaching.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#ebook">Free Ebook</a></li>
+            <li><a href="index.html#path-to-profit">Path to Profits Workshop</a></li>
+            <li><a href="index.html#profit-accelerator">12 Week Profit Accelerator</a></li>
+            <li><a href="index.html#inner-circle">Inner Circle Mastermind</a></li>
+            <li><a href="index.html#one-to-one">1-to-1 Coaching</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul class="contact-list">
+            <li class="contact-item"><span class="contact-icon">✉️</span><span>tracey@traceyleak.com</span></li>
+            <li class="contact-item"><span class="contact-icon">☎️</span><span>0407 564 119</span></li>
+            <li class="contact-item"><span class="contact-icon">📍</span><span>Suite 31011 (Level 10), 9 Lawson St, Southport Qld 4215</span></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Follow</h4>
+          <div class="footer-social">
+            <a class="social-btn" aria-label="LinkedIn" href="#"><span>in</span></a>
+            <a class="social-btn" aria-label="Facebook" href="#"><span>f</span></a>
+            <a class="social-btn" aria-label="Instagram" href="#"><span>ig</span></a>
+          </div>
+          <a class="footer-cta" href="contact.html">Get started today</a>
+        </div>
+      </div>
+      <hr class="footer-divider">
+      <div class="footer-bottom">
+        <span>© 2025 Gold Coast Business Coaching. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,1 @@
+Logo is currently loaded from https://ik.imagekit.io/q0gorn2pwv/logo.png via the `img src` in index.html. If you prefer to self-host, drop the file here as `logo.png` and update the `src` path accordingly or use your WordPress media URL.

@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gold Coast Business Coaching</title>
+  <link rel="icon" href="https://ik.imagekit.io/q0gorn2pwv/logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue-900: #0a3c99;
+      --blue-700: #0f5fc7;
+      --blue-100: #e6f0ff;
+      --yellow-400: #f7c948;
+      --yellow-200: #fdecb5;
+      --yellow-100: #fff7de;
+      --white: #ffffff;
+      --text-main: #0b234a;
+      --text-muted: #4a5a7a;
+      --shadow: 0 14px 30px rgba(12, 27, 51, 0.1);
+      --radius: 16px;
+      --footer-bg: #0c3b67;
+      --footer-border: rgba(255, 255, 255, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Manrope", "Segoe UI", system-ui, -apple-system, sans-serif;
+      background:
+        radial-gradient(140% 120% at 100% 0%, rgba(15, 95, 199, 0.08), transparent 55%),
+        radial-gradient(90% 70% at 14% 16%, rgba(247, 201, 72, 0.1), transparent 55%),
+        var(--white);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1280px, calc(100% - 64px));
+      margin: 0 auto;
+    }
+
+    /* Navigation */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(15, 95, 199, 0.08);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 0;
+      gap: 12px;
+    }
+
+    .nav-inner .brand {
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      justify-content: flex-end;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .nav-inner .menu,
+    .nav-inner .cta-group {
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--blue-900);
+    }
+
+    .brand img {
+      height: 54px;
+      width: auto;
+      max-width: 220px;
+      display: block;
+      object-fit: contain;
+    }
+
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .menu-link {
+      position: relative;
+      color: inherit;
+      padding: 8px 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: none;
+      background: none;
+      font: inherit;
+      cursor: pointer;
+      transition: color 150ms ease;
+    }
+
+    .menu-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--blue-700), var(--yellow-400));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 160ms ease;
+    }
+
+    .menu-link:hover {
+      color: var(--blue-700);
+    }
+
+    .menu-link:hover::after,
+    .menu-link:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-toggle::after {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-left: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      transform: rotate(-45deg);
+      margin-left: 2px;
+      display: inline-block;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      min-width: 220px;
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(12, 27, 51, 0.12);
+      padding: 8px;
+      display: grid;
+      gap: 2px;
+      opacity: 0;
+      transform: none;
+      pointer-events: none;
+      transition: opacity 120ms ease;
+      border: 1px solid rgba(12, 27, 51, 0.05);
+      z-index: 5;
+    }
+
+    .dropdown:hover .dropdown-menu,
+    .dropdown:focus-within .dropdown-menu {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .dropdown-menu a {
+      padding: 10px 12px;
+      border-radius: 10px;
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    .dropdown-menu a:hover {
+      background: var(--yellow-100);
+      color: var(--blue-900);
+    }
+
+    /* Ebook highlight */
+    .ebook {
+      padding: 48px 0 72px;
+    }
+
+    .ebook-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 32px;
+      align-items: center;
+    }
+
+    .ebook-visual img {
+      width: 100%;
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      object-fit: cover;
+    }
+
+    .ebook-copy h2 {
+      margin: 0 0 12px 0;
+      color: var(--blue-900);
+      font-size: clamp(1.8rem, 2vw + 1rem, 2.4rem);
+      letter-spacing: -0.3px;
+      line-height: 1.25;
+    }
+
+    .ebook-copy p {
+      margin: 0 0 18px 0;
+      color: var(--text-muted);
+      font-size: 1.03rem;
+      max-width: 520px;
+    }
+
+    .banner-strip {
+      margin: 18px 0 14px 0;
+      background: linear-gradient(90deg, rgba(15, 95, 199, 0.12), rgba(247, 201, 72, 0.35), rgba(15, 95, 199, 0.12));
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1px solid rgba(12, 27, 51, 0.06);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    }
+
+    .banner-track {
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+      gap: 28px;
+      padding: 12px 20px;
+      min-width: 200%;
+      animation: bannerSlide 18s linear infinite;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      color: var(--blue-900);
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    .banner-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(12, 27, 51, 0.08);
+      box-shadow: 0 6px 12px rgba(12, 27, 51, 0.08);
+    }
+
+    .banner-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--yellow-400);
+      box-shadow: 0 0 0 4px rgba(247, 201, 72, 0.28);
+    }
+
+    @keyframes bannerSlide {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Services */
+    .services {
+      padding: 72px 0 96px;
+    }
+
+    .services-header {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+
+    .section-label {
+      width: 100%;
+      background: var(--yellow-200);
+      color: var(--blue-900);
+      border-radius: 999px;
+      padding: 12px 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 800;
+      font-size: 0.9rem;
+      justify-self: stretch;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .section-underline {
+      width: 90px;
+      height: 6px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--blue-700), var(--yellow-400));
+      margin: 4px auto 8px;
+    }
+
+    .services-header h2 {
+      margin: 0;
+      color: var(--blue-900);
+      font-size: clamp(2rem, 2vw + 1rem, 2.6rem);
+      letter-spacing: -0.4px;
+    }
+
+    .services-header p {
+      margin: 0;
+      color: var(--text-muted);
+      max-width: 720px;
+      font-size: 1.02rem;
+      justify-self: center;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .service-card {
+      background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+      border-radius: 18px;
+      padding: 20px 20px 18px 20px;
+      border: 1px solid rgba(12, 27, 51, 0.08);
+      box-shadow: 0 12px 28px rgba(12, 27, 51, 0.08);
+      display: grid;
+      gap: 12px;
+      position: relative;
+      overflow: hidden;
+      min-height: 100%;
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+    }
+
+    .service-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(15, 95, 199, 0.04), rgba(247, 201, 72, 0.06));
+      opacity: 0;
+      transition: opacity 180ms ease;
+      z-index: 0;
+    }
+
+    .service-card::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(135deg, var(--blue-700), var(--yellow-400));
+      opacity: 0.9;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 36px rgba(12, 27, 51, 0.12);
+      border-color: rgba(12, 27, 51, 0.12);
+    }
+
+    .service-card:hover::before {
+      opacity: 1;
+    }
+
+    .service-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .service-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(15, 95, 199, 0.12);
+      color: var(--blue-900);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      font-size: 0.85rem;
+      width: fit-content;
+    }
+
+    .service-title {
+      margin: 0;
+      color: var(--blue-900);
+      font-size: 1.28rem;
+      letter-spacing: -0.2px;
+    }
+
+    .service-sub {
+      margin: 0;
+      color: var(--text-main);
+      font-weight: 700;
+      font-size: 1.02rem;
+    }
+
+    .service-body {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.97rem;
+      line-height: 1.6;
+    }
+
+    .service-footer {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-top: 6px;
+    }
+
+    /* About */
+    .about {
+      padding: 72px 0 96px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 32px;
+      align-items: center;
+    }
+
+    .about-copy h2 {
+      margin: 0 0 14px 0;
+      color: var(--blue-900);
+      font-size: clamp(2rem, 2vw + 1rem, 2.5rem);
+      letter-spacing: -0.4px;
+    }
+
+    .about-copy p {
+      margin: 0 0 16px 0;
+      color: var(--text-muted);
+      font-size: 1.02rem;
+      line-height: 1.65;
+    }
+
+    .about-copy p:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .about-visual {
+      position: relative;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .about-visual .panel {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+      padding: 12px;
+      border: 1px solid rgba(12, 27, 51, 0.06);
+      max-width: 460px;
+      width: 100%;
+    }
+
+    .about-visual img {
+      width: 100%;
+      aspect-ratio: 3 / 5;
+      height: auto;
+      display: block;
+      border-radius: 14px;
+      object-fit: cover;
+      object-position: 80% center;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      padding: 72px 0 96px;
+    }
+
+    .testimonials-header {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+      max-width: 720px;
+    }
+
+    .testimonials-header h2 {
+      margin: 0;
+      color: var(--blue-900);
+      font-size: clamp(2rem, 2vw + 1rem, 2.6rem);
+      letter-spacing: -0.4px;
+    }
+
+    .testimonials-header p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 1.02rem;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+      align-items: start;
+    }
+
+    .testimonial-col {
+      position: relative;
+      overflow: hidden;
+      mask-image: linear-gradient(to bottom, transparent, black 18%, black 82%, transparent);
+      -webkit-mask-image: linear-gradient(to bottom, transparent, black 18%, black 82%, transparent);
+      height: 520px;
+    }
+
+    .testimonial-track {
+      display: grid;
+      gap: 14px;
+      animation: scrollUp var(--duration, 18s) linear infinite;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 16px 16px 14px;
+      border: 1px solid rgba(12, 27, 51, 0.08);
+      box-shadow: 0 10px 24px rgba(12, 27, 51, 0.08);
+      display: grid;
+      gap: 14px;
+    }
+
+    .testimonial-text {
+      margin: 0;
+      color: var(--text-main);
+      font-size: 0.98rem;
+      line-height: 1.55;
+    }
+
+    .testimonial-profile {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .testimonial-profile img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .testimonial-name {
+      font-weight: 700;
+      color: var(--blue-900);
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    .testimonial-role {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.3;
+    }
+
+    @keyframes scrollUp {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-50%); }
+    }
+
+    /* Newsletter */
+    .newsletter {
+      padding: 64px 0 96px;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--footer-bg);
+      color: rgba(255, 255, 255, 0.88);
+      padding: 64px 0 32px;
+      margin-top: 32px;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 32px;
+      align-items: start;
+    }
+
+    .footer-col h4 {
+      margin: 0 0 12px 0;
+      font-size: 1.1rem;
+      color: #fff;
+      letter-spacing: -0.1px;
+    }
+
+    .footer-brand img {
+      max-width: 180px;
+      height: auto;
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    .footer-text {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 8px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.88);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .footer-links a:hover {
+      color: var(--yellow-400);
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 10px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .contact-item {
+      display: grid;
+      grid-template-columns: 20px 1fr;
+      gap: 10px;
+      align-items: center;
+      color: rgba(255, 255, 255, 0.88);
+      font-weight: 600;
+    }
+
+    .contact-icon {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      color: var(--yellow-400);
+    }
+
+    .footer-social {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .social-btn {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: var(--yellow-400);
+      display: grid;
+      place-items: center;
+      color: var(--footer-bg);
+      font-weight: 800;
+      text-decoration: none;
+      transition: transform 150ms ease, box-shadow 150ms ease;
+    }
+
+    .social-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.18);
+    }
+
+    .footer-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 18px;
+      background: var(--yellow-400);
+      color: var(--footer-bg);
+      border-radius: 12px;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .footer-cta:hover {
+      transform: translateY(-1px);
+    }
+
+    .footer-divider {
+      margin: 32px 0 22px;
+      border: none;
+      border-top: 1px solid var(--footer-border);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.95rem;
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .footer-top {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .footer-top {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .newsletter-box {
+      background: var(--white);
+      border-radius: 22px;
+      padding: 28px;
+      border: 1px solid rgba(12, 27, 51, 0.08);
+      box-shadow: 0 12px 28px rgba(12, 27, 51, 0.08);
+      display: grid;
+      gap: 12px;
+      max-width: 840px;
+      margin: 0 auto;
+    }
+
+    .newsletter h3 {
+      margin: 0;
+      color: var(--blue-900);
+      font-size: clamp(1.6rem, 1vw + 1rem, 2rem);
+      letter-spacing: -0.3px;
+    }
+
+    .newsletter p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 1.02rem;
+    }
+
+    .newsletter form {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .newsletter input[type="email"] {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(12, 27, 51, 0.1);
+      font-size: 1rem;
+      font-family: inherit;
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--text-main);
+    }
+
+    .newsletter input[type="email"]:focus {
+      outline: none;
+      border-color: rgba(15, 95, 199, 0.4);
+      box-shadow: 0 0 0 3px rgba(15, 95, 199, 0.16);
+    }
+
+    .newsletter .btn-primary {
+      padding: 14px 18px;
+      white-space: nowrap;
+    }
+
+    .newsletter-note {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 700px) {
+      .newsletter form {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-visual {
+        justify-content: center;
+      }
+
+      .about-visual .panel {
+        max-width: 100%;
+      }
+
+      .about-visual img {
+        max-height: none;
+      }
+    }
+
+    .cta-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease, border-color 150ms ease;
+      font-size: 0.95rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue-700), var(--blue-900));
+      color: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 32px rgba(12, 27, 51, 0.22);
+    }
+
+    .btn-ghost {
+      background: var(--yellow-100);
+      color: var(--blue-900);
+      border-color: rgba(247, 201, 72, 0.5);
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(15, 95, 199, 0.2);
+      transform: translateY(-1px);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 64px 0 96px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 32px;
+      align-items: center;
+    }
+
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--yellow-200);
+      color: var(--blue-900);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.8rem;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 3vw + 1rem, 3rem);
+      color: var(--blue-900);
+      line-height: 1.2;
+      letter-spacing: -0.5px;
+    }
+
+    .hero p {
+      margin: 0;
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 560px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      color: var(--blue-900);
+      font-weight: 600;
+    }
+
+    .meta-pill {
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(247, 201, 72, 0.24);
+      color: var(--blue-900);
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-visual .panel {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+      padding: 12px;
+      border: 1px solid rgba(12, 27, 51, 0.06);
+      animation: floatPanel 14s ease-in-out infinite;
+    }
+
+    .hero-visual img {
+      width: 100%;
+      display: block;
+      border-radius: 14px;
+      object-fit: cover;
+      aspect-ratio: 4 / 3;
+    }
+
+    .orb {
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 35% 35%, rgba(15, 95, 199, 0.3), transparent 60%),
+        radial-gradient(circle at 70% 70%, rgba(247, 201, 72, 0.45), transparent 60%);
+      top: -60px;
+      right: -40px;
+      filter: blur(10px);
+      z-index: -1;
+    }
+
+    @keyframes floatPanel {
+      0% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-10px) scale(1.01); }
+      100% { transform: translateY(0) scale(1); }
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeUp 800ms ease forwards;
+      animation-delay: var(--delay, 0ms);
+    }
+
+    @keyframes fadeUp {
+      0% { opacity: 0; transform: translateY(12px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-visual .panel {
+        animation: none;
+      }
+
+      .fade-up {
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+
+      .banner-track {
+        animation: none;
+      }
+
+      .testimonial-track {
+        animation: none;
+      }
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 900px) {
+      .nav-inner {
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+
+      .menu {
+        width: 100%;
+        justify-content: center;
+        gap: 18px;
+      }
+
+      .dropdown-menu {
+        position: static;
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+        box-shadow: none;
+        background: var(--yellow-100);
+        border: 1px solid rgba(12, 27, 51, 0.06);
+        margin-top: 6px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        padding-top: 12px;
+      }
+
+      .ebook-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .banner-track {
+        gap: 18px;
+        font-size: 0.85rem;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-card {
+        padding: 18px;
+      }
+
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .testimonial-col {
+        height: 440px;
+      }
+
+      .nav-right {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body id="top">
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="Gold Coast Business Coaching">
+        <img src="https://ik.imagekit.io/q0gorn2pwv/logo.png" alt="Gold Coast Business Coaching logo" loading="lazy">
+        <span class="sr-only">Gold Coast Business Coaching</span>
+      </a>
+      <div class="nav-right">
+        <nav class="menu" aria-label="Main navigation">
+          <a class="menu-link fade-up" style="--delay: 60ms;" href="#top">Home</a>
+          <a class="menu-link fade-up" style="--delay: 120ms;" href="#about">About</a>
+          <a class="menu-link fade-up" style="--delay: 150ms;" href="#ebook">Free Ebook</a>
+          <div class="dropdown">
+            <button class="menu-link dropdown-toggle fade-up" style="--delay: 180ms;" type="button" aria-haspopup="true">Programs</button>
+            <div class="dropdown-menu" role="menu">
+              <a href="path-to-profit.html" role="menuitem">Path to Profit Workshop</a>
+              <a href="profit-accelerator.html" role="menuitem">12 Week Profit Accelerator</a>
+              <a href="inner-circle.html" role="menuitem">Inner Circle Mastermind</a>
+              <a href="one-to-one.html" role="menuitem">1-2-1 Strategy & Coaching</a>
+            </div>
+          </div>
+          <a class="menu-link fade-up" style="--delay: 240ms;" href="contact.html">Contact Us</a>
+        </nav>
+        <div class="cta-group">
+          <a class="btn btn-primary fade-up" style="--delay: 260ms;" href="contact.html">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow fade-up" style="--delay: 120ms;">Gold Coast Business Coaching</span>
+        <h1 class="fade-up" style="--delay: 200ms;">I Help Business Owners Grow Their Profitability with Confidence</h1>
+        <p class="fade-up" style="--delay: 280ms;">Shape a business you love with tailored coaching, practical strategy, and the accountability to make it happen. Fresh, modern, and grounded in the Gold Coast community.</p>
+        <div class="hero-actions fade-up" style="--delay: 360ms;">
+          <a class="btn btn-primary" href="#ebook">Download Your Free EBook</a>
+        </div>
+      </div>
+      <div class="hero-visual fade-up" style="--delay: 320ms;">
+        <div class="panel">
+          <img src="https://ik.imagekit.io/q0gorn2pwv/tracey_leak_008.png" alt="Tracey Leek Business Coaching">
+        </div>
+        <div class="orb" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ebook" id="ebook">
+    <div class="container">
+      <div class="services-header fade-up" style="--delay: 120ms; margin-bottom: 20px;">
+        <span class="section-label">Free Ebook</span>
+        <div class="section-underline" aria-hidden="true"></div>
+      </div>
+      <div class="ebook-grid">
+      <div class="ebook-visual fade-up" style="--delay: 160ms;">
+        <img src="https://ik.imagekit.io/q0gorn2pwv/ebook-5hkBKkjV.jpeg" alt="Free ebook cover for Gold Coast Business Coaching">
+      </div>
+      <div class="ebook-copy fade-up" style="--delay: 240ms;">
+        <h2>Download your free guide to building a profitable, confident business.</h2>
+        <p>Get actionable steps to stabilise cash flow, sharpen your pricing, and lead with clarity—drawn from the same frameworks we use with Gold Coast founders.</p>
+        <div class="banner-strip" aria-hidden="true">
+          <div class="banner-track">
+            <span class="banner-pill"><span class="banner-dot"></span>Cashflow clarity</span>
+            <span class="banner-pill"><span class="banner-dot"></span>Pricing that sticks</span>
+            <span class="banner-pill"><span class="banner-dot"></span>Team alignment</span>
+            <span class="banner-pill"><span class="banner-dot"></span>Growth habits</span>
+            <span class="banner-pill"><span class="banner-dot"></span>Leadership confidence</span>
+            <span class="banner-pill"><span class="banner-dot"></span>Cashflow clarity</span>
+            <span class="banner-pill"><span class="banner-dot"></span>Pricing that sticks</span>
+            <span class="banner-pill"><span class="banner-dot"></span>Team alignment</span>
+            <span class="banner-pill"><span class="banner-dot"></span>Growth habits</span>
+            <span class="banner-pill"><span class="banner-dot"></span>Leadership confidence</span>
+          </div>
+        </div>
+        <div class="hero-actions" id="ebook-download">
+          <a class="btn btn-primary" href="#ebook-download">Download Your Free Ebook</a>
+          <a class="btn btn-ghost" href="#newsletter">Subscribe to Newsletter</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <div class="container">
+      <div class="services-header fade-up" style="--delay: 120ms;">
+        <span class="section-label">Programs</span>
+        <div class="section-underline" aria-hidden="true"></div>
+        <h2>Four ways I can help you …</h2>
+        <p>Choose the coaching experience that fits your stage of growth, from fast-track workshops to deep, year-long masterminds.</p>
+      </div>
+      <div class="services-grid">
+        <article class="service-card fade-up" style="--delay: 180ms;" id="path-to-profit">
+          <span class="service-tag">Workshop</span>
+          <h3 class="service-title">Path to Profits Workshop</h3>
+          <p class="service-sub">Your Roadmap to a More Profitable Business</p>
+          <p class="service-body">Ready to take control of your numbers and boost your profits? Join me for a practical, hands-on workshop designed for Gold Coast Business Owners. We’ll uncover the key drivers in your business, fine-tune your marketing and sales strategies, and find simple ways to increase your margins and cashflow. With my 20+ years’ experience and a small group format, you’ll leave with a clear, actionable plan to grow your business – and the confidence to make it happen. Held in Southport and it is FREE to attend.</p>
+          <div class="service-footer">
+            <a class="btn btn-primary" href="path-to-profit.html">Know More</a>
+          </div>
+        </article>
+        <article class="service-card fade-up" style="--delay: 220ms;" id="profit-accelerator">
+          <span class="service-tag">12 Weeks</span>
+          <h3 class="service-title">12 Week Profit Accelerator</h3>
+          <p class="service-sub">Take your Business from Good to Great!</p>
+          <p class="service-body">You’re doing okay in business – but you know there’s so much more potential. The 12 Week Profit Accelerator is a practical, hands-on program for Gold Coast Business Owners who want to step into the driver’s seat, take control, and grow profits with confidence. We start with two deep-dive days, including a detailed review of your P&L to uncover the hidden profit pockets in your business. From there, we create your 90-day action plan then meet weekly to implement, troubleshoot, and keep you accountable and continue your business knowledge. We finish our 12 weeks with a full day together to make sure you are set to continue the growth of your business. By the end, you’ll have real results, a clear roadmap, and the skills to keep accelerating long after the program ends.</p>
+          <div class="service-footer">
+            <a class="btn btn-primary" href="profit-accelerator.html">Know More</a>
+          </div>
+        </article>
+        <article class="service-card fade-up" style="--delay: 260ms;" id="inner-circle">
+          <span class="service-tag">12 Months</span>
+          <h3 class="service-title">Inner Circle Mastermind</h3>
+          <p class="service-sub">For Gold Coast Business Owners to Ready to Scale & Grow</p>
+          <p class="service-body">The Inner Circle Mastermind is an exclusive 12-month program designed for establishing Gold Coast Business Owners who are ready to break through to the next level. You’ll get expert coaching, peer accountability, guest speakers, and tailored support – all in a small, highly engage group. We meet quarterly for two intensive days, plus weekly coaching sessions and monthly one-to-one time with me. If you’re ambitious about scaling your business and becoming a high-performing leader, register your interest today to secure a spot for 2026.</p>
+          <div class="service-footer">
+            <a class="btn btn-primary" href="inner-circle.html">Know More</a>
+          </div>
+        </article>
+        <article class="service-card fade-up" style="--delay: 300ms;" id="one-to-one">
+          <span class="service-tag">1-2-1</span>
+          <h3 class="service-title">1-2-1 Strategy & Coaching</h3>
+          <p class="service-sub">Personalised Support for Your Business</p>
+          <p class="service-body">Sometimes you just need someone in your corner – someone to talk things out with, brainstorm ideas, and guide you to make smart, profitable decisions for your business. My one-to-one coaching gives you exactly that. Choose a one-off strategy session for a quick boost of clarity, or commit to ongoing weekly coaching for premium personalised support to grow your business. Together, we’ll work on your marketing, profit margins, and big-picture decisions so you can take control and turbocharge your results.</p>
+          <div class="service-footer">
+            <a class="btn btn-primary" href="one-to-one.html">Know More</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="container">
+      <div class="services-header fade-up" style="--delay: 120ms;">
+        <span class="section-label">Who is Tracy?</span>
+        <div class="section-underline" aria-hidden="true"></div>
+        <h2>Meet Tracey Leak</h2>
+      </div>
+      <div class="about-grid">
+      <div class="about-copy fade-up" style="--delay: 140ms;">
+        <p>Tracey Leak is a dynamic business coach and sought-after speaker, dedicated to empowering Gold Coast Business Owners to achieve higher levels of profitability and success. With over 20 years of experience coaching business owners, Tracey combines her extensive knowledge with a passion for helping others unlock their full potential. Her unique approach focusses on strategies that align with each business owners goals, fostering sustainable growth and long-term success.</p>
+        <p>Tracey’s workshops and coaching sessions are renowned for their interactive and engaging format, encouraging participants to share experiences and collaborate on solutions. She believes that the key to profitability lies in understanding and working the numbers of your business and understanding the key drivers in your business. Her insights help businesses streamline operations, enhance marketing and ultimately driving great profits.</p>
+        <p>As a compelling speaker, Tracey captivates audiences with her expertise and relatable storytelling with practical and simple strategies and solutions. She shares real-world examples and practical tips that inspire action and innovation.</p>
+        <p>Tracey believes that keeping things simple will lead to the best chance of success and of course implementation. There is nothing basic about the basics and helping business owners to take control on their business and understand what THEY need to do, Tracey helps them work towards their own success and greater profitability.</p>
+        <p>Whether you’re looking to refine your business strategy or elevate your profitability, Tracey is here to guide you on your path to success.</p>
+      </div>
+      <div class="about-visual fade-up" style="--delay: 220ms;">
+        <div class="panel">
+          <img src="https://ik.imagekit.io/q0gorn2pwv/tracey_leak_001%20(1).png" alt="Tracey Leak portrait">
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="services-header fade-up" style="--delay: 120ms;">
+        <span class="section-label">Testimonials</span>
+        <div class="section-underline" aria-hidden="true"></div>
+        <h2>What clients say</h2>
+        <p>Real results from Gold Coast business owners who’ve grown profits, clarity, and confidence with Tracey’s guidance.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-col fade-up" style="--delay: 180ms;">
+          <div class="testimonial-track" style="--duration: 18s;">
+            <article class="testimonial-card">
+              <p class="testimonial-text">“Tracey helped us untangle pricing and cashflow in one week. I finally feel in control of our numbers instead of guessing.”</p>
+              <div class="testimonial-profile">
+                <img src="https://randomuser.me/api/portraits/women/21.jpg" alt="Amelia Carter">
+                <div>
+                  <p class="testimonial-name">Amelia Carter</p>
+                  <p class="testimonial-role">Owner, Coastal Café</p>
+                </div>
+              </div>
+            </article>
+            <article class="testimonial-card">
+              <p class="testimonial-text">“The Profit Accelerator gave me a 90-day plan I could actually execute. Revenue is up and I’m spending less time firefighting.”</p>
+              <div class="testimonial-profile">
+                <img src="https://randomuser.me/api/portraits/men/11.jpg" alt="Mark Bennett">
+                <div>
+                  <p class="testimonial-name">Mark Bennett</p>
+                  <p class="testimonial-role">Founder, GC Trades</p>
+                </div>
+              </div>
+            </article>
+            <article class="testimonial-card">
+              <p class="testimonial-text">“Tracey brings clarity fast. Her coaching balanced strategy and accountability, and my team felt the impact within weeks.”</p>
+              <div class="testimonial-profile">
+                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Priya Nair">
+                <div>
+                  <p class="testimonial-name">Priya Nair</p>
+                  <p class="testimonial-role">Director, Nair Legal</p>
+                </div>
+              </div>
+            </article>
+            <article class="testimonial-card">
+              <p class="testimonial-text">“Tracey helped us untangle pricing and cashflow in one week. I finally feel in control of our numbers instead of guessing.”</p>
+              <div class="testimonial-profile">
+                <img src="https://randomuser.me/api/portraits/women/21.jpg" alt="Amelia Carter">
+                <div>
+                  <p class="testimonial-name">Amelia Carter</p>
+                  <p class="testimonial-role">Owner, Coastal Café</p>
+                </div>
+              </div>
+            </article>
+            <article class="testimonial-card">
+              <p class="testimonial-text">“The Profit Accelerator gave me a 90-day plan I could actually execute. Revenue is up and I’m spending less time firefighting.”</p>
+              <div class="testimonial-profile">
+                <img src="https://randomuser.me/api/portraits/men/11.jpg" alt="Mark Bennett">
+                <div>
+                  <p class="testimonial-name">Mark Bennett</p>
+                  <p class="testimonial-role">Founder, GC Trades</p>
+                </div>
+              </div>
+            </article>
+            <article class="testimonial-card">
+              <p class="testimonial-text">“Tracey brings clarity fast. Her coaching balanced strategy and accountability, and my team felt the impact within weeks.”</p>
+              <div class="testimonial-profile">
+                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Priya Nair">
+                <div>
+                  <p class="testimonial-name">Priya Nair</p>
+                  <p class="testimonial-role">Director, Nair Legal</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="testimonial-col fade-up" style="--delay: 220ms;">
+          <div class="testimonial-track" style="--duration: 20s;">
+            <article class="testimonial-card">
+              <p class="testimonial-text">“The Inner Circle accountability and peer insight were game changers. We hit our quarterly targets two months early.”</p>
+              <div class="testimonial-profile">
+                <img src="https://randomuser.me/api/portraits/men/34.jpg" alt="Daniel Brooks">
+                <div>
+                  <p class="testimonial-name">Daniel Brooks</p>
+                  <p class="testimonial-role">CEO, Surfside Retail</p>
+                </div>
+              </div>
+            </article>
+            <article class="testimonial-card">
+              <p class="testimonial-text">“Tracey helped me systemise the business so I could step back without sales dropping. Profit is up and stress is down.”</p>
+              <div class="testimonial-profile">
+                <img src="https://randomuser.me/api/portraits/women/57.jpg" alt="Olivia Chen">
+                <div>
+                  <p class="testimonial-name">Olivia Chen</p>
+                  <p class="testimonial-role">Co-founder, Growth Studio</p>
+                </div>
+              </div>
+            </article>
+            <article class="testimonial-card">
+              <p class="testimonial-text">“Her one-to-one coaching paid for itself in the first month. We fixed margins, tightened offers, and cashflow finally feels predictable.”</p>
+              <div class="testimonial-profile">
+                <img src="https://randomuser.me/api/portraits/men/14.jpg" alt="Liam Parker">
+                <div>
+                  <p class="testimonial-name">Liam Parker</p>
+                  <p class="testimonial-role">Owner, Parker Plumbing</p>
+                </div>
+              </div>
+            </article>
+            <article class="testimonial-card">
+              <p class="testimonial-text">“The Inner Circle accountability and peer insight were game changers. We hit our quarterly targets two months early.”</p>
+              <div class="testimonial-profile">
+                <img src="https://randomuser.me/api/portraits/men/34.jpg" alt="Daniel Brooks">
+                <div>
+                  <p class="testimonial-name">Daniel Brooks</p>
+                  <p class="testimonial-role">CEO, Surfside Retail</p>
+                </div>
+              </div>
+            </article>
+            <article class="testimonial-card">
+              <p class="testimonial-text">“Tracey helped me systemise the business so I could step back without sales dropping. Profit is up and stress is down.”</p>
+              <div class="testimonial-profile">
+                <img src="https://randomuser.me/api/portraits/women/57.jpg" alt="Olivia Chen">
+                <div>
+                  <p class="testimonial-name">Olivia Chen</p>
+                  <p class="testimonial-role">Co-founder, Growth Studio</p>
+                </div>
+              </div>
+            </article>
+            <article class="testimonial-card">
+              <p class="testimonial-text">“Her one-to-one coaching paid for itself in the first month. We fixed margins, tightened offers, and cashflow finally feels predictable.”</p>
+              <div class="testimonial-profile">
+                <img src="https://randomuser.me/api/portraits/men/14.jpg" alt="Liam Parker">
+                <div>
+                  <p class="testimonial-name">Liam Parker</p>
+                  <p class="testimonial-role">Owner, Parker Plumbing</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="testimonial-col fade-up" style="--delay: 260ms;">
+          <div class="testimonial-track" style="--duration: 19s;">
+            <article class="testimonial-card">
+              <p class="testimonial-text">“Tracey’s workshop clarified the numbers we should watch weekly. Our team now rallies around metrics that actually drive profit.”</p>
+              <div class="testimonial-profile">
+                <img src="https://randomuser.me/api/portraits/women/83.jpg" alt="Sophie Williams">
+                <div>
+                  <p class="testimonial-name">Sophie Williams</p>
+                  <p class="testimonial-role">Marketing Lead, Wave Wellness</p>
+                </div>
+              </div>
+            </article>
+            <article class="testimonial-card">
+              <p class="testimonial-text">“She brings structure without overcomplicating. We doubled lead quality and improved close rates in a single quarter.”</p>
+              <div class="testimonial-profile">
+                <img src="https://randomuser.me/api/portraits/men/51.jpg" alt="Jason Miller">
+                <div>
+                  <p class="testimonial-name">Jason Miller</p>
+                  <p class="testimonial-role">Managing Partner, Horizon Finance</p>
+                </div>
+              </div>
+            </article>
+            <article class="testimonial-card">
+              <p class="testimonial-text">“I left every session with clear actions and felt genuinely supported. The confidence boost alone was worth it.”</p>
+              <div class="testimonial-profile">
+                <img src="https://randomuser.me/api/portraits/women/41.jpg" alt="Emma Davis">
+                <div>
+                  <p class="testimonial-name">Emma Davis</p>
+                  <p class="testimonial-role">Founder, Bright Path Coaching</p>
+                </div>
+              </div>
+            </article>
+            <article class="testimonial-card">
+              <p class="testimonial-text">“Tracey’s workshop clarified the numbers we should watch weekly. Our team now rallies around metrics that actually drive profit.”</p>
+              <div class="testimonial-profile">
+                <img src="https://randomuser.me/api/portraits/women/83.jpg" alt="Sophie Williams">
+                <div>
+                  <p class="testimonial-name">Sophie Williams</p>
+                  <p class="testimonial-role">Marketing Lead, Wave Wellness</p>
+                </div>
+              </div>
+            </article>
+            <article class="testimonial-card">
+              <p class="testimonial-text">“She brings structure without overcomplicating. We doubled lead quality and improved close rates in a single quarter.”</p>
+              <div class="testimonial-profile">
+                <img src="https://randomuser.me/api/portraits/men/51.jpg" alt="Jason Miller">
+                <div>
+                  <p class="testimonial-name">Jason Miller</p>
+                  <p class="testimonial-role">Managing Partner, Horizon Finance</p>
+                </div>
+              </div>
+            </article>
+            <article class="testimonial-card">
+              <p class="testimonial-text">“I left every session with clear actions and felt genuinely supported. The confidence boost alone was worth it.”</p>
+              <div class="testimonial-profile">
+                <img src="https://randomuser.me/api/portraits/women/41.jpg" alt="Emma Davis">
+                <div>
+                  <p class="testimonial-name">Emma Davis</p>
+                  <p class="testimonial-role">Founder, Bright Path Coaching</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="newsletter" id="newsletter">
+    <div class="container">
+      <div class="services-header fade-up" style="--delay: 100ms; margin-bottom: 16px;">
+        <span class="section-label">Stay Connected</span>
+        <div class="section-underline" aria-hidden="true"></div>
+      </div>
+      <div class="newsletter-box fade-up" style="--delay: 140ms;">
+        <h3>Stay Connected</h3>
+        <p>Join our newsletter for exclusive business insights, profit-boosting strategies, and Gold Coast business news.</p>
+        <form>
+          <label class="sr-only" for="newsletter-email">Email</label>
+          <input id="newsletter-email" type="email" name="email" placeholder="Enter your email" required>
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+        <p class="newsletter-note">No spam. Only practical guidance. Unsubscribe anytime.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-col footer-brand">
+          <img src="https://ik.imagekit.io/q0gorn2pwv/logo.png" alt="Gold Coast Business Coaching logo">
+          <p class="footer-text">Helping Gold Coast business owners grow profitability with practical, actionable coaching.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="#ebook">Free Ebook</a></li>
+            <li><a href="#path-to-profit">Path to Profits Workshop</a></li>
+            <li><a href="#profit-accelerator">12 Week Profit Accelerator</a></li>
+            <li><a href="#inner-circle">Inner Circle Mastermind</a></li>
+            <li><a href="#one-to-one">1-to-1 Coaching</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul class="contact-list">
+            <li class="contact-item"><span class="contact-icon">✉️</span><span>tracey@traceyleak.com</span></li>
+            <li class="contact-item"><span class="contact-icon">☎️</span><span>0407 564 119</span></li>
+            <li class="contact-item"><span class="contact-icon">📍</span><span>Suite 31011 (Level 10), 9 Lawson St, Southport Qld 4215</span></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Follow</h4>
+          <div class="footer-social">
+            <a class="social-btn" aria-label="LinkedIn" href="#"><span>in</span></a>
+            <a class="social-btn" aria-label="Facebook" href="#"><span>f</span></a>
+            <a class="social-btn" aria-label="Instagram" href="#"><span>ig</span></a>
+          </div>
+          <a class="footer-cta" href="#contact">Get started today</a>
+        </div>
+      </div>
+      <hr class="footer-divider">
+      <div class="footer-bottom">
+        <span>© 2025 Gold Coast Business Coaching. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
